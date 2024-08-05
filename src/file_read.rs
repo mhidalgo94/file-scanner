@@ -5,6 +5,7 @@ pub struct FileRead {
     pub name: String
 }
 
+
 impl FileRead{
     pub fn new(name:String,path_base: Option<String>) -> Self {
         // If is None path_base use current dir file
@@ -22,13 +23,20 @@ impl FileRead{
         }
     }
 
-    pub fn full_path(self)-> PathBuf{
+    pub fn full_path(&self)-> PathBuf{
         // Return full path rute in PathBuf 
         Path::new(&self.path_base).join(&self.name)
     }
 
-    pub fn str_full_path(self)-> String{
-        // Return full path rute in string format
-        self.full_path().to_string_lossy().into_owned()
+    
+    // pub fn str_full_path(&self)-> String{
+    //     // Return full path rute in string format
+    //     self.full_path().to_string_lossy().into_owned()
+    // }
+
+    pub fn path_buf(&self) -> PathBuf {
+        self.full_path()
     }
 }
+
+
