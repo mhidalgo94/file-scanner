@@ -1,12 +1,15 @@
 mod file_read;
 use file_read::FileRead;
 
+use notify::Result;
 
-fn main() {
 
-    let file = FileRead::new("text.txt".to_string(), None).str_full_path();
+fn main() -> Result<()>{
 
-    println!("{}", file);
+    let file = FileRead::new("livefile.txt".to_string(),Some("/tmp/".to_string()));
 
+
+
+    file.watch()
 
 }
