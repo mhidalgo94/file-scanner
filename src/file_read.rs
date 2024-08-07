@@ -33,10 +33,10 @@ impl FileRead{
     }
 
     
-    // pub fn str_full_path(&self)-> String{
-    //     // Return full path rute in string format
-    //     self.full_path().to_string_lossy().into_owned()
-    // }
+    pub fn str_full_path(&self)-> String{
+        // Return full path rute in string format
+        self.full_path().to_string_lossy().into_owned()
+    }
 
     // pub fn path_buf(&self) -> PathBuf {
     //     self.full_path()
@@ -53,7 +53,7 @@ impl FileRead{
 
          watcher.watch(&self.full_path(), RecursiveMode::NonRecursive)?;
 
-         println!("Watching file: {:?}", self.full_path());
+        //  println!("Watching file: {:?}", self.full_path());
  
          // Process events
          loop {
