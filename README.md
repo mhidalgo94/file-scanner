@@ -25,19 +25,20 @@ $ cargo run
 
 ## Monitor Specific Files or Directories
 You can pass file or directory paths as arguments to monitor them:
+
 ```sh 
-$ cargo run <file_or_directory_path> 
+$ cargo run -- <file_or_directory_path> 
 ```
 ##  Example
 To monitor a specific file:
 ```sh 
-$ cargo run /path/to/your/file.txt
+$ cargo run -- /path/to/your/file.txt
 ```
 
 To monitor a specific directory:
 
 ```sh 
-$ cargo run /path/to/your/directory  path/to/your/directory2
+$ cargo run -- /path/to/your/directory  path/to/your/directory2
 ```
 
 ## Functionality
