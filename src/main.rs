@@ -40,7 +40,7 @@ fn main() -> Result<()>{
                     println!("'{}' exists but is neither a file nor a directory.", path_check.display());
                 }
             } else {
-                println!("The file '{}' does not exist.",file_path.to_string_lossy());
+                println!("This Path '{}' does not exist.",file_path.to_string_lossy());
             }
         }
     }

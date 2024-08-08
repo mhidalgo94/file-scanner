@@ -2,13 +2,25 @@ use std::env;
 use std::path::{Path, PathBuf};
 use std::sync::mpsc::channel;
 use notify::{Watcher, RecommendedWatcher,RecursiveMode, Result, EventKind};
-// use notify::event::AccessKind;
+use notify::event::Event;
+use chrono::prelude::Local;
 
 pub struct FileRead {
     pub path_base : String,
     pub name: String
 }
 
+
+fn get_datetime_local(action: String, event: Event)-> String{
+    
+    let local = Local::now();
+    let formatted = format!("{}: {}: {:?}", local.format("%Y-%m-%d %H:%M:%S").to_string(), action, event.paths);
+
+    formatted
+
+
+
+} 
 
 impl FileRead{
     pub fn new(name:String,path_base: Option<String>) -> Self {
@@ -73,13 +85,19 @@ impl FileRead{
                     //     // println!("Access Read: {:?}", event.paths);
                     // },
                     EventKind::Create(_) => {
-                        println!("Create: {:?}", event.paths);
+                        let str_out = get_datetime_local("Create".to_string(), event);
+                        println!("{}", str_out);
+                        // println!("Create: {:?}", event.paths);
                     },
                     EventKind::Modify(_) => {
-                        println!("Modify: {:?}", event.paths);
+                        let str_out = get_datetime_local("Modify".to_string(), event);
+                        println!("{}", str_out);
+                        // println!("Modify: {:?}", event.paths);
                     },
                     EventKind::Remove(_) => {
-                        println!("Remove: {:?}", event.paths);
+                        let str_out = get_datetime_local("Remove".to_string(), event);
+                        println!("{}", str_out);
+                        // println!("Remove: {:?}", event.paths);
                     },
                     // EventKind::Access(AccessKind::Close(_)) => {
                     //     println!("Close: {:?}", event.paths);
